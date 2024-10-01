@@ -18,7 +18,7 @@ Vector::~Vector()
 	cout << "Destructor\n";
 	delete[]arr;
 	size = 0;
-	
+
 }
 Vector::Vector(const Vector& obj)
 {
@@ -34,7 +34,7 @@ void Vector::InputRand()
 {
 	for (int i = 0; i < size; i++)
 	{
-		arr[i] = rand()%41 - 20; // [-20 +20]
+		arr[i] = rand() % 41 - 20;
 	}
 }
 void Vector::Print()
@@ -48,17 +48,17 @@ void Vector::Print()
 
 void Vector::PushBack(int a)
 {
-	int* temp = new int[size + 1];  // содаем новый массив (тек размер +1)
+	int* temp = new int[size + 1];
 
 	for (int i = 0; i < size; i++)
 	{
-		temp[i] = arr[i]; // копируем текущие значени€ старого массива в новый массив
+		temp[i] = arr[i];
 	}
-	temp[size] = a; // инициализаци€ последнего элемента параметром метода
+	temp[size] = a;
 
-	delete[] arr; // удаление старого массива!
+	delete[] arr;
 
-	arr = temp; // перенаправл€ем указатель в объекте на новый дин. массив
+	arr = temp;
 	size++;
 
 }
@@ -70,7 +70,7 @@ int Vector::PopBack()
 	{
 		temp[i] = arr[i];
 	}
-	int el = arr[size - 1]; // достаем последний элемент старого массива ƒќ удалени€
+	int el = arr[size - 1];
 
 	delete[] arr;
 	arr = temp;
@@ -81,7 +81,7 @@ int Vector::PopBack()
 
 Vector Vector::operator- (int a)
 {
-	Vector rez(size - a); // 5 - 2 = 3
+	Vector rez(size - a);
 	for (int i = 0; i < rez.size; i++)
 	{
 		rez.arr[i] = this->arr[i];
@@ -91,17 +91,17 @@ Vector Vector::operator- (int a)
 
 Vector& Vector::operator++()
 {
-	int* temp = new int[size + 1];  
+	int* temp = new int[size + 1];
 
 	for (int i = 0; i < size; i++)
 	{
-		temp[i] = arr[i]; 
+		temp[i] = arr[i];
 	}
-	temp[size] = 0; 
+	temp[size] = 0;
 
-	delete[] arr; 
+	delete[] arr;
 
-	arr = temp; 
+	arr = temp;
 	size++;
 
 	return *this;
@@ -114,7 +114,7 @@ Vector& Vector::operator--()
 	{
 		temp[i] = arr[i];
 	}
-	int el = arr[size - 1]; 
+	int el = arr[size - 1];
 
 	delete[] arr;
 	arr = temp;
@@ -122,14 +122,17 @@ Vector& Vector::operator--()
 
 	return *this;
 }
-Vector& Vector::operator+=(int a) {
+Vector& Vector::operator+=(int a)
+{
 	int* temp = new int[size + a];
 
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++)
+	{
 		temp[i] = arr[i];
 	}
 
-	for (int i = size; i < size + a; i++) {
+	for (int i = size; i < size + a; i++)
+	{
 		temp[i] = 0;
 	}
 
@@ -141,10 +144,13 @@ Vector& Vector::operator+=(int a) {
 	return *this;
 }
 
-Vector& Vector::operator-=(int a) {
-	if (size >= a) {
+Vector& Vector::operator-=(int a)
+{
+	if (size >= a)
+	{
 		int* temp = new int[size - a];
-		for (int i = 0; i < size - a; i++) {
+		for (int i = 0; i < size - a; i++)
+		{
 			temp[i] = arr[i];
 		}
 
@@ -155,11 +161,12 @@ Vector& Vector::operator-=(int a) {
 	}
 
 	return *this;
-
 }
 
-Vector& Vector::operator*=(int a) {
-	for (int i = 0; i < size; i++) {
+Vector& Vector::operator*=(int a)
+{
+	for (int i = 0; i < size; i++)
+	{
 		arr[i] *= a;
 	}
 
